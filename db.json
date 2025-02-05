@@ -87,8 +87,8 @@
         "imagen": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Alfa_Romeo_F1_Team_logo.svg"
       },
       {
-        "nombre": "Williams",
-        "pais": "Reino Unido",
+        "equipo": "Williams",
+        "modelo": "FW46",
         "motor": "Mercedes",
         "pilotos": [17, 18],
         "auto": "FW47",
