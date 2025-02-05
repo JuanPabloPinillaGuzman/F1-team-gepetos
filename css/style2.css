@@ -11,3 +11,210 @@
 #Circuitos{
     display: none;
 }
+
+/* Colores oficiales F1 con neón */
+:root {
+    --f1-red: #e10600;
+    --f1-red-dark: #b30500;
+    --f1-red-light: #ff1801;
+    --dark-primary: #0a0a0a;
+    --dark-secondary: #1a1a1a;
+    --dark-accent: #2a2a2a;
+    --light-text: #ffffff;
+    --gray-text: #a0a0a0;
+}
+
+/* Estilos generales */
+body {
+    background-color: var(--dark-primary);
+    color: var(--light-text);
+    font-family: 'Titillium Web', sans-serif;
+}
+
+/* Efectos Neón Generales */
+.neon-text {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+                 0 0 20px rgba(255, 255, 255, 0.8),
+                 0 0 30px rgba(255, 255, 255, 0.6);
+}
+
+/* Estilos para las cards */
+.card {
+    background-color: var(--dark-secondary);
+    border: 1px solid var(--f1-red);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 15px rgba(225, 6, 0, 0.2);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(225, 6, 0, 0.3);
+}
+
+.card-header {
+    background-color: var(--dark-accent);
+    border-bottom: 2px solid var(--f1-red);
+}
+
+.card-title {
+    color: var(--light-text);
+    font-weight: 600;
+}
+
+.card-body {
+    color: var(--light-text);
+}
+
+/* Estilos para botones */
+.btn-primary {
+    background-color: var(--f1-red);
+    border: none;
+    color: var(--light-text);
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 10px 25px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--f1-red-light);
+    transform: scale(1.05);
+}
+
+/* Estilos para formularios */
+.form-control, .form-select {
+    background-color: var(--dark-accent);
+    border: 1px solid var(--gray-text);
+    color: var(--light-text);
+}
+
+.form-control:focus, .form-select:focus {
+    background-color: var(--dark-accent);
+    border-color: var(--f1-red);
+    box-shadow: 0 0 0 0.2rem rgba(225, 6, 0, 0.25);
+    color: var(--light-text);
+}
+
+/* Títulos con efecto neón */
+h1, h2, h3, h4, h5 {
+    color: var(--light-text);
+    text-shadow: 2px 2px 4px rgba(225, 6, 0, 0.3);
+}
+
+/* Estilos para las imágenes de logos */
+.card-header img {
+    filter: drop-shadow(0 0 5px var(--neon-white))
+           drop-shadow(0 0 10px var(--neon-white));
+    transition: all 0.3s ease;
+}
+
+.card-header img:hover {
+    filter: drop-shadow(0 0 8px var(--neon-white))
+           drop-shadow(0 0 15px var(--neon-white));
+}
+
+/* Línea divisoria con efecto neón */
+.f1-line {
+    height: 3px;
+    background: var(--f1-red);
+    margin: 20px auto;
+    width: 50%;
+    box-shadow: 0 2px 4px rgba(225, 6, 0, 0.3);
+}
+
+/* Animación de pulso suave */
+@keyframes softPulse {
+    0% {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    }
+    100% {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    }
+}
+
+.card {
+    animation: softPulse 3s infinite;
+}
+
+/* Efecto hover para texto */
+.card-text {
+    transition: all 0.3s ease;
+}
+
+.card-text:hover {
+    text-shadow: 0 0 7px #fff,
+                 0 0 10px var(--neon-white);
+    color: var(--light-text);
+}
+
+/* Estilo para los iconos */
+.fas {
+    color: var(--f1-red);
+}
+
+/* Texto hover con color rojo */
+.card-text:hover {
+    color: var(--f1-red-light);
+}
+
+/* Estilos para acordeón de vehículos */
+.accordion {
+    --bs-accordion-bg: var(--dark-secondary);
+    --bs-accordion-border-color: var(--f1-red);
+    --bs-accordion-btn-bg: var(--dark-accent);
+    --bs-accordion-btn-color: var(--light-text);
+    --bs-accordion-active-bg: var(--dark-primary);
+    --bs-accordion-active-color: var(--f1-red);
+    --bs-accordion-btn-focus-border-color: var(--f1-red);
+    --bs-accordion-btn-focus-box-shadow: 0 0 0 0.2rem rgba(225, 6, 0, 0.25);
+}
+
+.accordion-item {
+    background-color: var(--dark-secondary);
+    border: 1px solid var(--f1-red);
+}
+
+.accordion-button {
+    background-color: var(--dark-accent);
+    color: var(--light-text);
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: var(--dark-primary);
+    color: var(--f1-red);
+}
+
+.accordion-button::after {
+    filter: brightness(0) invert(1);
+}
+
+.accordion-button:not(.collapsed)::after {
+    filter: invert(15%) sepia(95%) saturate(6932%) hue-rotate(358deg) brightness(95%) contrast(126%);
+}
+
+.accordion-body {
+    background-color: var(--dark-secondary);
+    color: var(--light-text);
+    border-top: 1px solid var(--f1-red-dark);
+}
+
+/* Estilos para el contenido dentro del acordeón */
+.accordion-body ul li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--dark-accent);
+}
+
+.accordion-body ul li:last-child {
+    border-bottom: none;
+}
+
+.accordion-body .fas {
+    color: var(--f1-red);
+    width: 20px;
+    margin-right: 8px;
+}
