@@ -1,3 +1,5 @@
+import { getCombinedData, saveData } from '../services/dataService.js';
+
 export class FrmEquipos extends HTMLElement {
     constructor() {
         super();
@@ -175,7 +177,7 @@ export class FrmEquipos extends HTMLElement {
             .catch(error => console.error('Error cargando db.json:', error));
     }
 
-    guardarEquipo() {
+    async guardarEquipo() {
         // Obtener referencias a los elementos del formulario
         const nombreInput = this.querySelector('#nombre');
         const paisInput = this.querySelector('#pais');
@@ -213,15 +215,20 @@ export class FrmEquipos extends HTMLElement {
             pilotos: [parseInt(piloto1), parseInt(piloto2)]
         };
 
-        // Guardar en localStorage
-        let equiposGuardados = JSON.parse(localStorage.getItem('equipos')) || [];
-        equiposGuardados.push(nuevoEquipo);
-        localStorage.setItem('equipos', JSON.stringify(equiposGuardados));
-
-        // Mostrar mensaje de éxito y actualizar vista
-        alert('Equipo guardado con éxito');
-        this.limpiarCampos();
-        this.listarEquipos();
+        // Obtener datos actuales
+        const equiposActuales = await getCombinedData('equipos');
+        const equiposActualizados = [...equiposActuales, nuevoEquipo];
+        
+        // Guardar datos actualizados
+        const guardado = await saveData('equipos', equiposActualizados);
+        
+        if (guardado) {
+            alert('Equipo guardado con éxito');
+            this.limpiarCampos();
+            this.listarEquipos();
+        } else {
+            alert('Error al guardar el equipo');
+        }
     }
 
     limpiarCampos() {
@@ -232,20 +239,13 @@ export class FrmEquipos extends HTMLElement {
         });
     }
 
-    listarEquipos() {
+    async listarEquipos() {
         const container = this.querySelector('#equiposRegistrados');
         if (!container) return;
         container.innerHTML = '';
 
-        let equiposGuardados = JSON.parse(localStorage.getItem('equipos')) || [];
-        let todosLosEquipos = [...this.equipos];
-
-        equiposGuardados.forEach(equipoLocal => {
-            if (!todosLosEquipos.find(e => e.nombre === equipoLocal.nombre)) {
-                todosLosEquipos.push(equipoLocal);
-            }
-        });
-
+        const todosLosEquipos = await getCombinedData('equipos');
+        
         todosLosEquipos.forEach((equipo, index) => {
             const card = document.createElement('div');
             card.classList.add('col-md-4', 'mb-3');

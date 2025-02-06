@@ -218,3 +218,42 @@ h1, h2, h3, h4, h5 {
     width: 20px;
     margin-right: 8px;
 }
+
+.mt-3 {
+    color: #0a0a0a;
+}
+
+.navbar-nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.nav-item {
+    margin: 0;
+    padding: 0 10px;
+}
+
+.nav-link {
+    white-space: nowrap;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--f1-red) !important;
+}
+
+.form-control {
+    color: #333 !important;
+    background-color: #fff !important;
+}
+.form-control:focus {
+    color: #333;
+    background-color: #fff;
+}
+.circuit-image {
+    filter: invert(1) brightness(100%);
+    width: 100%;
+    height: auto;
+}
